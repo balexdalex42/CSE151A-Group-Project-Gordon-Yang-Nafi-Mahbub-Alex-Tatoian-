@@ -1,1 +1,38 @@
 # CSE151A-Group-Project-Gordon-Yang-Nafi-Mahbub-Alex-Tatoian-
+
+## Data Exploration
+### Size of the dataset
+Size: 958524 x 45\
+There are a total of 958524 observations in the dataset, each with 45 columns, amounting to over 400 MB.
+### Description of features
+#### Categorical Data Columns
+- id, spkid, full_name, name: Uniquely identifies each asteroid observed.
+- pdes: The primary designation. Another identifier for each observed asteroid.
+- prefix: The comet designation prefix. Only value given is 'A' meaning a comet that was mistakenly identified as an asteroid.
+- orbit_id, epoch, epoch_mjd, epoch_cal, equinox: Describe the orbital characteristics of the asteroid.
+- class: describes what kind of asteroid it is, specifically the region it's in. MBA is for example, "Main Belt Asteroid," in the Asteroid Belt between the orbits of Mars and Jupiter. This is a string data type.
+#### Our Target Categories
+- neo: Boolean flag for a "near-earth object" asteroid. True if it is a near-earth object.
+- pha: Boolean flag for a "potentially hazardous asteroid." True if it is considered a potentially hazardous asteroid.
+#### Continuous Data Columns
+- H: The absolute magnitude (or brightness) of the asteroid, as a float type, if it were 1 AU from both the Sun and the Earth.
+- diameter: The diameter of the asteroid as a float type.
+- diameter_sigma: The uncertainty of the asteroid's diameter measurement, also given as a float.
+- e: The eccentricity of the asteroid's orbit around the sun as a float. A value of 0 is a perfect circular orbit. Larger values under 1 are more elliptical. Any value greater than 1 means the orbital trajectory of the asteroid is hyperbolic and would thus be on an escape trajectory out of the solar system, and no longer orbiting the sun.
+- a: The semi-major axis of the asteroid's orbit, meaning its longest radius. This is a float type.
+- q: The perihelion distance of the asteroid's orbit, meaning its shortest distance it gets to the Sun on its orbital trajectory. This is a float type.
+- i: Orbital inclination in degrees, which is the angle of the orbit with respect to the plane of the solar system.
+- om: The longitude in degrees of the ascending node, which is the angle of the asteroid's orbit with respect to some reference plane.
+- w: Argument of perihelion, which is the angle between the ascending node of the asteroid's orbit and the perihelion.
+- ma: The mean anomaly, which is the fraction of the asteroid's orbital period that has elapsed, expressed as a float data type.
+- ad: Aphelion distance, which is the distance at which the asteroid orbits furthest from the Sun.
+- n: Mean motion, which is the average angular velocity of an asteroid to complete one orbit around the Sun.
+- tp, tp_cal: Time of perihelion passage, expressed as Barycentric Dynamical Time (TDB) and its calendar time.
+- per, per_y: The asteroid's orbital period expressed in units of days and years respectively.
+- moid, moid_ld: The minimum distance between the orbit of the asteroid with respect to Earth's, expressed in astronomical units (AU) and lunar distance (ld), respectively.
+- sigma_e, sigma_a, sigma_q, sigma_i, sigma_om, sigma_w, sigma_ma, sigma_ad, sigma_n, sigma_per, sigma_tp: The measurement uncertainties of each of their respective attributes.
+- rms: The root mean square of the orbital fit.
+### Missing and duplicate data in dataset
+Most of the entries have at least some data in some columns. An interesting observation is that the asteroid name is missing from the vasy majority of the entries. So are the diameter attributes, and albedos, which may be because the observation telescopes may not be good enough to measure extremely small objects, which make up the vast majority of asteroids. In one of the target classes, "neo," there are only four missing from the entire set. Lastly, there are some nineteen thousand values missing from the sigma_ columns, which are the measurement uncertainties of various attributes.
+
+By running a simple line of code: `df[df.duplicated()]` we were able to verify that no duplicate entries exist in the dataset at all.
