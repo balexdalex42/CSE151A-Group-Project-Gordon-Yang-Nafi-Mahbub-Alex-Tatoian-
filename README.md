@@ -55,7 +55,7 @@ By running a simple line of code: `df[df.duplicated()]` we were able to verify t
 
 ## Data Plotting:
 
-**All data plots are on the ipynb file in the same branch**
+**All data plots are on the [ipynb file](/ms2.ipynb) in the same branch**
 
 ## Preprocessing Plan:
 
