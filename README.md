@@ -53,6 +53,10 @@ Most of the entries have at least some data in some columns. An interesting obse
 
 By running a simple line of code: `df[df.duplicated()]` we were able to verify that no duplicate entries exist in the dataset at all.
 
+## Data Plotting:
+
+**All data plots are on the ipynb file in the same branch**
+
 ## Preprocessing Plan:
 
 We plan to use PHA as the label by mapping Y to 1 and N to 0 and drop any row with a missing or invalid PHA. We would have to drop ids spkid, id, pdes, name, full_name, and orbit_id since they do not explain behaviour and could potentially act as noise and trick our model. We will set types correctly by treating NEO, PHA, and Equinox as categorical and coercing H, Diameter, Albedo, Diameter_sigma, Epoch, e, a, q, i, tp, and moid_ld to numbers. Missing data can be handled with averages from the training split with numeric features using the median and categorical features using the mode. Columns that are mostly missing and low value will be removed and rows with mostly missing data will be removed aswell.
