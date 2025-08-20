@@ -4,13 +4,14 @@
 The entire dataset from kaggle can be found [here](https://www.kaggle.com/datasets/sakhawat18/asteroid-dataset). At the top left of the screen, click **Download** and then **Download dataset as zip**. Unzip the `archive` folder into the main project directory.
 ### Directory structure
 The following directory structure must be followed when downloading the dataset:
-
-CSE151A-Group-Project-Gordon-Yang-Nafi-Mahbub-Alex-Tatoian-/\
-├─ archive/\
-│  ├─ dataset.csv\
-├─ README.md\
-├─ ms2.ipynb\
+```
+CSE151A-Group-Project-Gordon-Yang-Nafi-Mahbub-Alex-Tatoian-/
+├─ archive/
+│  ├─ dataset.csv
+├─ README.md
+├─ ms2.ipynb
 ├─ .gitignore
+```
 
 ### Other requirements
 - Have Python 3 installed on your machine.
