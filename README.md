@@ -7,13 +7,13 @@ For simplicity, we ran this preprocessing step in a different notebook, located 
 ### For Decision Tree Classifier
 The notebook for the Decision Tree Classifier can be found **[here](/ms3decisiontree.ipynb)**.
 
-**TODO:** Add explanation on how you preprocessed the data before running the decision tree.
+For the decision tree we finished preprocessing by imputing missing numeric values with the median and categorical values with the most frequent value fit on the training split. We also one hot encoded NEO and equinox so the model sees clean numeric inputs and added a simple log transform to skewed positive columns diameter, moid_ld, a and q to reduce skew and keep splits from being driven by extreme values. We did not scale features since trees are scale independent, ID fields stayed dropped and any impossible physical values were turned into missing values and handled by the imputer. 
 
 ### For SVM Classifier
 For the SVM Classifier, all `object` dtype columns, except the output `pha` class, were one-hot encoded, and `float64`, which made up the remainder, were z-score normalized. The `pha` column was encoded such that `'Y' => 1` and `'N' => 0`. At this stage, I did 3:1 of the dataset into training and testing sets. Additionally, due to the huge imbalance issue of our `pha` output class, I also ran an oversampling using the `ADASYN` class from `imblearn.over_sampling` to balance out the output class only on the `X_train` and `y_train` data. This final step pushed the shapes of these to `(699251, 29)` and `(699251,)` respectively.
 
 ## First Model: Decision Tree Classifier
-**TODO:** Where does your model fit in the fitting graph? 
+The decision tree model follows the usual pattern where with very small depth it cannot split enough, so both train and validation errors are high and it underfits. As we grow the depth the train error drops fast and the validation error goes down, then starts creeping back up while train error heads toward zero, which is the overfitting side. We chose the depth right around the bottom of the validation curve where the gap between train and validation is small. So the model sits in the balanced zone rather than the underfit or overfit ends.
 
 After seeing the success of the decision tree classifier, we wanted to give a shot with the Support Vector Machine (SVM) as our output class is binary and the decision boundary would likely be easy to determine, and so we gave it a try below.
 
@@ -23,4 +23,4 @@ Surprisingly, we got a much lower precision for identifying **hazardous** astero
 The notebook for the SVM trial can be found **[here](/model_svm.ipynb)**.
 
 ## Conclusion
-**TODO:** What is the conclusion of your 1st model? What can be done to possibly improve it? 
+We think the decision tree is a solid first model, as with class weights and light preprocessing it delivers strong recall on PHA and better precision than the SVM run. Most misses are borderline cases that look similar in brightness or orbit, so the tree occasionally flags extra positives. To tighten it up we can prune with ccp alpha and a larger minimum leaf, tune the decision threshold from the validation PR curve and if recall still needs help try some light SMOTE on the training split. After that we can compare the model against a calibrated linear SVM as a fast margin baseline.
