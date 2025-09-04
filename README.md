@@ -16,6 +16,7 @@ Milestone 3:
 **[decision tree](/ms3decisiontree.ipynb)**
 
 Milestone 4:
+**[KNN](/ms4.ipynb)**
 
 
 
