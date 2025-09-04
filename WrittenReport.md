@@ -34,4 +34,13 @@ Surprisingly, we got a much lower precision for identifying **hazardous** astero
 
 ## Discussion Section
 
+### First Model: Decision Tree Classifier
+
+We think the decision tree is a solid first model, as with class weights and light preprocessing it delivers strong recall on PHA and better precision than the SVM run. Most misses are borderline cases that look similar in brightness or orbit, so the tree occasionally flags extra positives. To tighten it up we can prune with ccp alpha and a larger minimum leaf, tune the decision threshold from the validation PR curve and if recall still needs help try some light SMOTE on the training split. After that we can compare the model against a calibrated linear SVM as a fast margin baseline.
+
+### Second Model: SVM using Linear and RBF Kernels
+
+We found that SVM was a decent model in terms of the practicality of the model in real life, where there mostly problems with precision: non-hazardous asteroids are likely to be flagged. Our model accuracy was high, thus this ends up being a much better case than hazardous asteroids not being flagged! In order to try to increase our precision, we can potentially use class weights differently as ADASYN makes the model focuses on boosting recall, in favor of precision. We can also potentially decrease our regularization parameter, making the SVM margin wider which might decrease the amount of false positives. Finally, SVM ended up being extremely slow, with our implementation using the linear kernel to be around 70 minutes and the implenetation using the RBF kernel to be around 2 hours! This is a substantial amount of time that would scale very fast, if say, our dataset was much larger. We think that using the super computer, potentially writing a few cuda kernels, or using pytorch (for parallelized matrix multiplication) can reduce this time cost significantly. All it boils down to is how much computing power we need, and unfortunately using our own devices without algorithm optimizations or parallelism will greatly slow training time.
+
+
 ## Conclusion
