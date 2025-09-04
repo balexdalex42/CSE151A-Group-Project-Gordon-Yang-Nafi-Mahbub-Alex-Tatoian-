@@ -127,3 +127,5 @@ Given more time, we could experiment with an ANN and some different existing arc
 ## Statement of Collaboration
 Gordon: I primarily did the data preprocessing part, dropping unusable feature columns from the dataset and dropping any rows that had empty entries. The notebook I wrote also helped save the preprocessed data to be usable in future model training. In Milestone 3, I experimented with the Support Vector Machine, SVC, from the `sklearn` library and ran the training with both `linear` and `rbf` kernels. For both Milestone 2 and 3, I typed up the writeup for the respective sections that I had done myself for the README.
 
+Nafi : In Milestone3, used Gordons preprocessed data and processed it some more and imported the Decision Tree model from sklearn and trained and compared results using different values of K. For Milestone 1, 2, 3 and 4, helped with the writeup, mainly doing the sections I had done myself while also writing for the overall project in the README and WrittenReport.
+
