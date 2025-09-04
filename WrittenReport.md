@@ -1,11 +1,12 @@
-*Introduction
 
-*Figures
+#Introduction
 
-*Methods Section
+#Figures
 
-*Results Section
+#Methods Section
 
-*Discussion Section
+#Results Section
 
-*Conclusion
+#Discussion Section
+
+#Conclusion
