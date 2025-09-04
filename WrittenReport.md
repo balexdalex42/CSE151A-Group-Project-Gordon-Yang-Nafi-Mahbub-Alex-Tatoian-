@@ -116,7 +116,13 @@ We think the decision tree is a solid first model, as with class weights and lig
 
 ### Model 2: K-Nearest-Neighbors
 
-We found that KNN was not a great model
+The K-Nearest Neighbors (KNN) classifier showed moderate success on the asteroid dataset, but our results suggest it is not an ideal choice for this classification task. After applying PCA to reduce dimensionality, increasing the number of PCA components and neighbors improved the macro F1 score from roughly 0.5 to 0.7. While this indicates some improvement in classifying both hazardous and non-hazardous asteroids, the model still misclassifies a substantial fraction of hazardous asteroids.
+
+The overall accuracy remained very high (~0.99), but this metric is misleading due to the extreme class imbalance: only 0.2% of the samples were hazardous. Most of the accuracy comes from correctly predicting the majority non-hazardous class, providing little insight into the model’s effectiveness on the minority class.
+
+Given these results, we would be cautious about using KNN in practice for this problem. The model’s sensitivity to class imbalance and reliance on distance metrics mean that rare hazardous asteroids are often misclassified. Even with PCA reducing dimensionality and hyperparameter tuning, KNN cannot guarantee high recall for the critical hazardous class. For this task, where missing a hazardous asteroid could have severe consequences, a model that explicitly accounts for class imbalance—such as a weighted classifier, tree-based methods, or anomaly detection approaches—would likely be more suitable.
+
+In summary, while KNN demonstrates some predictive power, it is not recommended as the primary model for identifying hazardous asteroids due to its limitations in handling rare but critical classes.
 
 ### Additional Model Trial: SVM using Linear and RBF Kernels
 
