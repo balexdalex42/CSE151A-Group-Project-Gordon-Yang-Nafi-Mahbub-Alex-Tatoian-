@@ -7,6 +7,8 @@ For this project, we will try to classify asteroids as potentially hazardous (PH
 
 ## Methods Section
 
+### Data Exploration
+
 ### Decision Tree Classifier
 The notebook for the Decision Tree Classifier can be found **[here](/ms3decisiontree.ipynb)**.
 
