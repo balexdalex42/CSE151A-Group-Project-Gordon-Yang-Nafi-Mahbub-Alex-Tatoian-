@@ -47,7 +47,8 @@ Most of the entries have at least some data in some columns. An interesting obse
 ### Data Preprocessing
 For this part, we dropped columns that had a large amount of `NaN` data, like the `prefix`, `diameter`, and `albedo`. The `equinox` column also had only one unique value, which suggests that this feature will not help in our classification problem, so it was removed too. Names and identifier columns, `id`, `spkid`, `name`, `pdes`, `full_name`, and `prefix`, of the asteroids were removed as well as none of that information will give insight into its potential hazard. Additionally, some columns are essentially duplicates, of each other since they are expressing the same data in different units or a different format. Lastly, all the `sigma` columns were removed, as these are measurement uncertainties of existing attributes and will not give us anymore information for our classifier. In the end, we decided that we had more than enough data (932335) compared to the original size (958524) to just drop the remaining rows that had `NaN` data without having to do any imputation. There are only 18 columns left after removal of columns as well. Since we tried out two different models, additional data preprocessing steps follow below, specific to each model.
 
-By running a simple line of code: `df[df.duplicated()]` we were able to verify that no duplicate entries exist in the dataset at all.
+By running a simple line of code: `df[df.duplicated()]` we were able to verify that no duplicate entries exist in the dataset at all.  
+You can check out the Preprocessing code **[here](https://github.com/balexdalex42/CSE151A-Group-Project-Gordon-Yang-Nafi-Mahbub-Alex-Tatoian-/blob/main/ms4.ipynb)** or also **[here](https://github.com/balexdalex42/CSE151A-Group-Project-Gordon-Yang-Nafi-Mahbub-Alex-Tatoian-/blob/Milestone3/prep_dataset.ipynb).**
 
 
 ### Model 1: Decision Tree Classifier
@@ -56,6 +57,9 @@ The notebook for the Decision Tree Classifier can be found **[here](/ms3decision
 For the decision tree we finished preprocessing by imputing missing numeric values with the median and categorical values with the most frequent value fit on the training split. We also one hot encoded NEO and equinox so the model sees clean numeric inputs and added a simple log transform to skewed positive columns diameter, moid_ld, a and q to reduce skew and keep splits from being driven by extreme values. We did not scale features since trees are scale independent, ID fields stayed dropped and any impossible physical values were turned into missing values and handled by the computer.
 
 ### Model 2: K-Nearest_Neighbors
+The notebook for the KNN Classifier can be found **[here](https://github.com/balexdalex42/CSE151A-Group-Project-Gordon-Yang-Nafi-Mahbub-Alex-Tatoian-/blob/main/ms4.ipynb)**.
+
+For the KNN Classifier, we first preprocessed the data by applying one-hot encoding to all categorical variables that were retained. We then separated the output class and performed an 80/20 train-test split. To reduce dimensionality, we applied PCA, reducing the original 27 features to a maximum of 8. We performed PCA using a scaled SVD on both the training and testing inputs, as PCA requires scaled data. Next, we iterated over different numbers of PCA dimensions ($k$) (up to 8) and KNN neighbors (num_neighbors) (up to 15). This effectively performed a double cross-validation to determine the optimal `(k, num_neighbors)` pair that maximized the macro F1 score.
 
 ### Additional Model Trial: SVM Classifier
 The notebook for the SVM trial can be found **[here](/model_svm.ipynb)**.
