@@ -55,7 +55,9 @@ The decision tree model follows the usual pattern where with very small depth it
 
 After seeing the success of the decision tree classifier, we wanted to give a shot with the Support Vector Machine (SVM) as our output class is binary and the decision boundary would likely be easy to determine, and so we gave it a try below.
 
-## Second Model Trial: SVM using Linear and RBF Kernels
+## Second Model: K-Nearest-Neighbors
+
+## Additional Model Trial: SVM using Linear and RBF Kernels
 Surprisingly, we got a much lower precision for identifying **hazardous** asteroids when running SVM than we did with the decision tree models. Also another surprise was that the kernel choice did not matter. Both linear and rbf kernels resulted in similar precision of 0.35 and 0.36 for **hazardous** asteroid classification. So what this tells us is that this model returns a lot of false positives, meaning we predict a large amount of asteroids to be **hazardous** when in reality, they weren't. So the silver lining here is that in the context of planetary defense, this model works fairly well and errs on the side of caution, as all other metrics, including accuracy, are nearly 100%. Lastly, comparing the training and testing metrics, with all training metrics always at near 100%, this model is **overfitting**.
 
 The notebook for the SVM trial can be found **[here](/model_svm.ipynb)**.
