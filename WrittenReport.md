@@ -83,6 +83,7 @@ Train:
 <img width="509" height="192" alt="Screenshot 2025-09-03 at 11 05 37 PM" src="https://github.com/user-attachments/assets/77f50504-37a5-44f8-adba-b1c6788f364b" />
 
 Test:
+
 <img width="509" height="192" alt="Screenshot 2025-09-03 at 11 01 13 PM" src="https://github.com/user-attachments/assets/c6bdb6ba-dfd5-43e7-976d-35942be37b9c" />
 
 
@@ -95,9 +96,16 @@ Surprisingly, we got a much lower precision for identifying **hazardous** astero
 Train:
 
 <img width="509" height="192" alt="Screenshot 2025-09-03 at 11 05 13 PM" src="https://github.com/user-attachments/assets/16bf630d-7e91-43a4-b789-8d916cfcb938" />
+
 Test:
 
 <img width="509" height="153" alt="Screenshot 2025-09-03 at 11 00 13 PM" src="https://github.com/user-attachments/assets/532450d6-3600-4f93-97aa-1a815db29849" />
+
+### KNN:
+
+<img width="636" height="457" alt="Screenshot 2025-09-03 at 11 10 33 PM" src="https://github.com/user-attachments/assets/d7d5a48c-b744-4a77-9fd9-6ea9e1525968" />
+<img width="758" height="563" alt="Screenshot 2025-09-03 at 11 10 44 PM" src="https://github.com/user-attachments/assets/5bfedfdb-42c4-4489-b485-db534123b1c1" />
+<img width="869" height="104" alt="Screenshot 2025-09-03 at 11 11 15 PM" src="https://github.com/user-attachments/assets/00325ee8-56a3-4e00-9a63-e781fd458263" />
 
 
 
