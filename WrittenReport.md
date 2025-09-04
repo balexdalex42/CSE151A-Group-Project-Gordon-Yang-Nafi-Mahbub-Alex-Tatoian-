@@ -5,6 +5,10 @@ For this project, we wanted to try classifying asteroids as potentially hazardou
 
 
 ## Figures
+<img width="442" height="421" alt="Screenshot 2025-09-03 at 10 52 35 PM" src="https://github.com/user-attachments/assets/9727ed88-4305-48c1-a4cd-cda61d2986eb" />
+<img width="442" height="421" alt="Screenshot 2025-09-03 at 10 55 19 PM" src="https://github.com/user-attachments/assets/86791350-ac4e-42f5-9dc1-d564c75da71b" />
+<img width="442" height="421" alt="Screenshot 2025-09-03 at 10 55 29 PM" src="https://github.com/user-attachments/assets/0d84b0f1-b2f6-4d4b-8239-ef683d59bf58" />
+
 
 ## Methods
 First, we had to preprocess the data to remove irrelevant or noisy features, then we tried experimenting with a bunch of machine learning models. We started with a Decision Tree Classifier and a Support Vector Machine (SVM) to set a baseline, tackling stuff like class imbalance and feature selection. Then we built on that, trying an unsupervised learning approach with Principal Component Analysis (PCA) to cut down dimensionality, followed by a K-Nearest Neighbors (KNN) classifier to boost prediction accuracy.
@@ -68,16 +72,28 @@ For the SVM Classifier, all `object` dtype columns, except the output `pha` clas
 
 ## Results Section
 
-## Model 1: Decision Tree Classifier 
+### Model 1: Decision Tree Classifier 
 
 The decision tree model follows the usual pattern where with very small depth it cannot split enough, so both train and validation errors are high and it underfits. As we grow the depth the train error drops fast and the validation error goes down, then starts creeping back up while train error heads toward zero, which is the overfitting side. We chose the depth right around the bottom of the validation curve where the gap between train and validation is small. So the model sits in the balanced zone rather than the underfit or overfit ends.
 
 After seeing the success of the decision tree classifier, we wanted to give a shot with the Support Vector Machine (SVM) as our output class is binary and the decision boundary would likely be easy to determine, and so we gave it a try below.
 
-## Model 2: K-Nearest-Neighbors
+Train:
+<img width="509" height="192" alt="Screenshot 2025-09-03 at 11 05 37 PM" src="https://github.com/user-attachments/assets/77f50504-37a5-44f8-adba-b1c6788f364b" />
+Test:
+<img width="509" height="192" alt="Screenshot 2025-09-03 at 11 01 13 PM" src="https://github.com/user-attachments/assets/c6bdb6ba-dfd5-43e7-976d-35942be37b9c" />
 
-## Additional Model Trial: SVM using Linear and RBF Kernels
+
+
+### Model 2: K-Nearest-Neighbors
+
+### Additional Model Trial: SVM using Linear and RBF Kernels
 Surprisingly, we got a much lower precision for identifying **hazardous** asteroids when running SVM than we did with the decision tree models. Also another surprise was that the kernel choice did not matter. Both linear and rbf kernels resulted in similar precision of 0.35 and 0.36 for **hazardous** asteroid classification. So what this tells us is that this model returns a lot of false positives, meaning we predict a large amount of asteroids to be **hazardous** when in reality, they weren't. So the silver lining here is that in the context of planetary defense, this model works fairly well and errs on the side of caution, as all other metrics, including accuracy, are nearly 100%. Lastly, comparing the training and testing metrics, with all training metrics always at near 100%, this model is **overfitting**.
+
+Train:
+<img width="509" height="192" alt="Screenshot 2025-09-03 at 11 05 13 PM" src="https://github.com/user-attachments/assets/16bf630d-7e91-43a4-b789-8d916cfcb938" />
+Test:
+<img width="509" height="153" alt="Screenshot 2025-09-03 at 11 00 13 PM" src="https://github.com/user-attachments/assets/532450d6-3600-4f93-97aa-1a815db29849" />
 
 
 
@@ -94,6 +110,7 @@ We think the decision tree is a solid first model, as with class weights and lig
 We found that SVM was a decent model in terms of the practicality of the model in real life, where there mostly problems with precision: non-hazardous asteroids are likely to be flagged. Our model accuracy was high, thus this ends up being a much better case than hazardous asteroids not being flagged! In order to try to increase our precision, we can potentially use class weights differently as ADASYN makes the model focuses on boosting recall, in favor of precision. We can also potentially decrease our regularization parameter, making the SVM margin wider which might decrease the amount of false positives. Finally, SVM ended up being extremely slow, with our implementation using the linear kernel to be around 70 minutes and the implenetation using the RBF kernel to be around 2 hours! This is a substantial amount of time that would scale very fast, if say, our dataset was much larger. We think that using the super computer, potentially writing a few cuda kernels, or using pytorch (for parallelized matrix multiplication) can reduce this time cost significantly. All it boils down to is how much computing power we need, and unfortunately using our own devices without algorithm optimizations or parallelism will greatly slow training time.
 
 ## Conclusion
+Given more time, we could experiment with an ANN and some different existing architecture. We think that the non-linearity of the ReLU activation function at each node in each hidden layer may be able to learn complex decision boundaries and better predict hazardous asteroids to be actually hazardous. In addition, considering this is a binary classification, we could also have experimented with a logsitic regression, using a customized binary cross entropy loss function that would heavily penalize the model for predicting that an asteroid is **not hazardous** when it really was **hazardous** so that the model will be more robust and have a better recall and precision metric. Through oversampling methods on SVM, we were able to get recall high enough, but precision remained fairly low, which results in many **hazardous** predictions when the asteroid wasn't. We were honestly very surprised at the success of the decision tree, which was much quicker and had better performance than the slower to train SVM.
 
 ## Statement of Collaboration
 Gordon: I primarily did the data preprocessing part, dropping unusable feature columns from the dataset and dropping any rows that had empty entries. The notebook I wrote also helped save the preprocessed data to be usable in future model training. In Milestone 3, I experimented with the Support Vector Machine, SVC, from the `sklearn` library and ran the training with both `linear` and `rbf` kernels. For both Milestone 2 and 3, I typed up the writeup for the respective sections that I had done myself for the README.
