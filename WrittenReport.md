@@ -1,7 +1,7 @@
 # Written Report
 
 ## Introduction
-For this project, we wanted to try classifying asteroids as potentially hazardous (PHA) using the NASA Small Body Database (SBDB) dataset, which contains detailed orbital and physical properties of over 958,000 asteroids. We picked this because it’s a real life challenge tying into planetary defense, like with NASA's DART mission which aims to prove whether we can strike an asteroid to alter its orbit and cause one heading towards Earth to miss instead.
+For this project, we wanted to try classifying asteroids as potentially hazardous (PHA) using the NASA Small Body Database (SBDB) dataset, which contains detailed orbital and physical properties of over 958,000 asteroids. We picked this because it’s a real life challenge tying into planetary defense, like with NASA's DART mission which aims to prove whether we can strike an asteroid to alter its orbit and cause one heading towards Earth to miss instead, saving numerous lives. An extremely good predictive model that can classify a newly discovered asteroid as hazardous or not could go a long way to save many lives and our biosphere, and give humanity the time it needs to prepare its response.
 
 
 ## Figures
@@ -89,9 +89,8 @@ We think the decision tree is a solid first model, as with class weights and lig
 
 We found that SVM was a decent model in terms of the practicality of the model in real life, where there mostly problems with precision: non-hazardous asteroids are likely to be flagged. Our model accuracy was high, thus this ends up being a much better case than hazardous asteroids not being flagged! In order to try to increase our precision, we can potentially use class weights differently as ADASYN makes the model focuses on boosting recall, in favor of precision. We can also potentially decrease our regularization parameter, making the SVM margin wider which might decrease the amount of false positives. Finally, SVM ended up being extremely slow, with our implementation using the linear kernel to be around 70 minutes and the implenetation using the RBF kernel to be around 2 hours! This is a substantial amount of time that would scale very fast, if say, our dataset was much larger. We think that using the super computer, potentially writing a few cuda kernels, or using pytorch (for parallelized matrix multiplication) can reduce this time cost significantly. All it boils down to is how much computing power we need, and unfortunately using our own devices without algorithm optimizations or parallelism will greatly slow training time.
 
-
 ## Conclusion
 
 ## Statement of Collaboration
-
+Gordon: I primarily did the data preprocessing part, dropping unusable feature columns from the dataset and dropping any rows that had empty entries. The notebook I wrote also helped save the preprocessed data to be usable in future model training. In Milestone 3, I experimented with the Support Vector Machine, SVC, from the `sklearn` library and ran the training with both `linear` and `rbf` kernels. For both Milestone 2 and 3, I typed up the writeup for the respective sections that I had done myself for the README.
 
