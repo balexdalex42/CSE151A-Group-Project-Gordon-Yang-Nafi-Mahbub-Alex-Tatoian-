@@ -130,4 +130,4 @@ Gordon: I primarily did the data preprocessing part, dropping unusable feature c
 
 Nafi : In Milestone3, used Gordons preprocessed data and processed it some more and imported the Decision Tree model from sklearn and trained and compared results using different values of K. For Milestone 1, 2, 3 and 4, helped with the writeup, mainly doing the sections I had done myself while also writing for the overall project in the README and WrittenReport.
 
-Alex: In Milestone 2, I contributed in 
+Alex: In Milestone 2, I was the one who graphed a bunch of the data that we thought would be useful and tried to lightly describe why as well. In Milestone 3, I helped write the readME, involving improvements, methods for optimizations, and talked in the conclusion. In Milestone 4, I was in charge of implementing the clustering, PCA/SVD, and the KNN model that was using cross validation.
