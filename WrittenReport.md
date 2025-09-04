@@ -79,7 +79,9 @@ The decision tree model follows the usual pattern where with very small depth it
 After seeing the success of the decision tree classifier, we wanted to give a shot with the Support Vector Machine (SVM) as our output class is binary and the decision boundary would likely be easy to determine, and so we gave it a try below.
 
 Train:
+
 <img width="509" height="192" alt="Screenshot 2025-09-03 at 11 05 37 PM" src="https://github.com/user-attachments/assets/77f50504-37a5-44f8-adba-b1c6788f364b" />
+
 Test:
 <img width="509" height="192" alt="Screenshot 2025-09-03 at 11 01 13 PM" src="https://github.com/user-attachments/assets/c6bdb6ba-dfd5-43e7-976d-35942be37b9c" />
 
@@ -91,8 +93,10 @@ Test:
 Surprisingly, we got a much lower precision for identifying **hazardous** asteroids when running SVM than we did with the decision tree models. Also another surprise was that the kernel choice did not matter. Both linear and rbf kernels resulted in similar precision of 0.35 and 0.36 for **hazardous** asteroid classification. So what this tells us is that this model returns a lot of false positives, meaning we predict a large amount of asteroids to be **hazardous** when in reality, they weren't. So the silver lining here is that in the context of planetary defense, this model works fairly well and errs on the side of caution, as all other metrics, including accuracy, are nearly 100%. Lastly, comparing the training and testing metrics, with all training metrics always at near 100%, this model is **overfitting**.
 
 Train:
+
 <img width="509" height="192" alt="Screenshot 2025-09-03 at 11 05 13 PM" src="https://github.com/user-attachments/assets/16bf630d-7e91-43a4-b789-8d916cfcb938" />
 Test:
+
 <img width="509" height="153" alt="Screenshot 2025-09-03 at 11 00 13 PM" src="https://github.com/user-attachments/assets/532450d6-3600-4f93-97aa-1a815db29849" />
 
 
