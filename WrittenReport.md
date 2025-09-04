@@ -6,6 +6,9 @@ For this project, we wanted to try classifying asteroids as potentially hazardou
 
 ## Figures
 <img width="442" height="421" alt="Screenshot 2025-09-03 at 10 52 35 PM" src="https://github.com/user-attachments/assets/9727ed88-4305-48c1-a4cd-cda61d2986eb" />
+<img width="442" height="421" alt="Screenshot 2025-09-03 at 10 55 19 PM" src="https://github.com/user-attachments/assets/86791350-ac4e-42f5-9dc1-d564c75da71b" />
+<img width="442" height="421" alt="Screenshot 2025-09-03 at 10 55 29 PM" src="https://github.com/user-attachments/assets/0d84b0f1-b2f6-4d4b-8239-ef683d59bf58" />
+
 
 ## Methods
 First, we had to preprocess the data to remove irrelevant or noisy features, then we tried experimenting with a bunch of machine learning models. We started with a Decision Tree Classifier and a Support Vector Machine (SVM) to set a baseline, tackling stuff like class imbalance and feature selection. Then we built on that, trying an unsupervised learning approach with Principal Component Analysis (PCA) to cut down dimensionality, followed by a K-Nearest Neighbors (KNN) classifier to boost prediction accuracy.
