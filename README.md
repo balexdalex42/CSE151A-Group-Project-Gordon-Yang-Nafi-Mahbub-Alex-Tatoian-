@@ -28,6 +28,10 @@ Notebook:
 
 Milestone 4:
 
+Writeup:
+
+**[Final Writeup](/WrittenReport.md)**
+
 Notebook:
 
 **[KNN](/ms4.ipynb)**
