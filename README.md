@@ -8,14 +8,23 @@ Milestone 1:
 
 
 Milestone 2:
+
 **[notebook](/ms2.ipynb)**
 
 Milestone 3:
+
+README: **[readme](/ms3rm)**
+
+Notebook:
+
 **[prep](/prep_dataset.ipynb)**
 **[svm](/model_svm.ipynb)**
 **[decision tree](/ms3decisiontree.ipynb)**
 
 Milestone 4:
+
+Notebook:
+
 **[KNN](/ms4.ipynb)**
 
 
