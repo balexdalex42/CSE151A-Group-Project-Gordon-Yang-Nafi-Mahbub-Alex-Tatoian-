@@ -79,8 +79,11 @@ The decision tree model follows the usual pattern where with very small depth it
 After seeing the success of the decision tree classifier, we wanted to give a shot with the Support Vector Machine (SVM) as our output class is binary and the decision boundary would likely be easy to determine, and so we gave it a try below.
 
 Train:
+
 <img width="509" height="192" alt="Screenshot 2025-09-03 at 11 05 37 PM" src="https://github.com/user-attachments/assets/77f50504-37a5-44f8-adba-b1c6788f364b" />
+
 Test:
+
 <img width="509" height="192" alt="Screenshot 2025-09-03 at 11 01 13 PM" src="https://github.com/user-attachments/assets/c6bdb6ba-dfd5-43e7-976d-35942be37b9c" />
 
 
@@ -91,9 +94,18 @@ Test:
 Surprisingly, we got a much lower precision for identifying **hazardous** asteroids when running SVM than we did with the decision tree models. Also another surprise was that the kernel choice did not matter. Both linear and rbf kernels resulted in similar precision of 0.35 and 0.36 for **hazardous** asteroid classification. So what this tells us is that this model returns a lot of false positives, meaning we predict a large amount of asteroids to be **hazardous** when in reality, they weren't. So the silver lining here is that in the context of planetary defense, this model works fairly well and errs on the side of caution, as all other metrics, including accuracy, are nearly 100%. Lastly, comparing the training and testing metrics, with all training metrics always at near 100%, this model is **overfitting**.
 
 Train:
+
 <img width="509" height="192" alt="Screenshot 2025-09-03 at 11 05 13 PM" src="https://github.com/user-attachments/assets/16bf630d-7e91-43a4-b789-8d916cfcb938" />
+
 Test:
+
 <img width="509" height="153" alt="Screenshot 2025-09-03 at 11 00 13 PM" src="https://github.com/user-attachments/assets/532450d6-3600-4f93-97aa-1a815db29849" />
+
+### KNN:
+
+<img width="636" height="457" alt="Screenshot 2025-09-03 at 11 10 33 PM" src="https://github.com/user-attachments/assets/d7d5a48c-b744-4a77-9fd9-6ea9e1525968" />
+<img width="758" height="563" alt="Screenshot 2025-09-03 at 11 10 44 PM" src="https://github.com/user-attachments/assets/5bfedfdb-42c4-4489-b485-db534123b1c1" />
+<img width="869" height="104" alt="Screenshot 2025-09-03 at 11 11 15 PM" src="https://github.com/user-attachments/assets/00325ee8-56a3-4e00-9a63-e781fd458263" />
 
 
 
@@ -118,4 +130,6 @@ Given more time, we could experiment with an ANN and some different existing arc
 
 ## Statement of Collaboration
 Gordon: I primarily did the data preprocessing part, dropping unusable feature columns from the dataset and dropping any rows that had empty entries. The notebook I wrote also helped save the preprocessed data to be usable in future model training. In Milestone 3, I experimented with the Support Vector Machine, SVC, from the `sklearn` library and ran the training with both `linear` and `rbf` kernels. For both Milestone 2 and 3, I typed up the writeup for the respective sections that I had done myself for the README.
+
+Nafi : In Milestone3, used Gordons preprocessed data and processed it some more and imported the Decision Tree model from sklearn and trained and compared results using different values of K. For Milestone 1, 2, 3 and 4, helped with the writeup, mainly doing the sections I had done myself while also writing for the overall project in the README and WrittenReport.
 
