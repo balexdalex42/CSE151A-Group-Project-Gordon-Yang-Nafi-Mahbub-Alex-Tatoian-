@@ -1,12 +1,13 @@
+# Written Report
 
-#Introduction
+# Introduction
 
-#Figures
+# Figures
 
-#Methods Section
+# Methods Section
 
-#Results Section
+# Results Section
 
-#Discussion Section
+# Discussion Section
 
-#Conclusion
+# Conclusion
