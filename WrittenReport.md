@@ -79,11 +79,8 @@ The decision tree model follows the usual pattern where with very small depth it
 After seeing the success of the decision tree classifier, we wanted to give a shot with the Support Vector Machine (SVM) as our output class is binary and the decision boundary would likely be easy to determine, and so we gave it a try below.
 
 Train:
-
 <img width="509" height="192" alt="Screenshot 2025-09-03 at 11 05 37 PM" src="https://github.com/user-attachments/assets/77f50504-37a5-44f8-adba-b1c6788f364b" />
-
 Test:
-
 <img width="509" height="192" alt="Screenshot 2025-09-03 at 11 01 13 PM" src="https://github.com/user-attachments/assets/c6bdb6ba-dfd5-43e7-976d-35942be37b9c" />
 
 
@@ -94,14 +91,16 @@ Test:
 Surprisingly, we got a much lower precision for identifying **hazardous** asteroids when running SVM than we did with the decision tree models. Also another surprise was that the kernel choice did not matter. Both linear and rbf kernels resulted in similar precision of 0.35 and 0.36 for **hazardous** asteroid classification. So what this tells us is that this model returns a lot of false positives, meaning we predict a large amount of asteroids to be **hazardous** when in reality, they weren't. So the silver lining here is that in the context of planetary defense, this model works fairly well and errs on the side of caution, as all other metrics, including accuracy, are nearly 100%. Lastly, comparing the training and testing metrics, with all training metrics always at near 100%, this model is **overfitting**.
 
 Train:
-
 <img width="509" height="192" alt="Screenshot 2025-09-03 at 11 05 13 PM" src="https://github.com/user-attachments/assets/16bf630d-7e91-43a4-b789-8d916cfcb938" />
-
 Test:
-
 <img width="509" height="153" alt="Screenshot 2025-09-03 at 11 00 13 PM" src="https://github.com/user-attachments/assets/532450d6-3600-4f93-97aa-1a815db29849" />
 
 ### KNN:
+KNN performed moderately well on this dataset but is not ideal for classifying hazardous asteroids. Despite dimensionality reduction via PCA, the model struggled with the extreme class imbalance: only 0.2% of samples were hazardous. While increasing the number of PCA components and neighbors improved the macro F1 score from ~0.5 to ~0.7, this still indicates that a substantial proportion of hazardous asteroids were misclassified.
+
+The overall accuracy was consistently high (~0.99), which might suggest excellent performance at first glance. However, this metric is misleading due to the class imbalance: correctly predicting the majority non-hazardous class dominates the accuracy, while the minority class performance remains poor.
+
+These results highlight that, in contexts where false negatives have serious consequences, KNN is limited. It is particularly sensitive to class imbalance and the relative distances between points, even after PCA. Therefore, alternative models that explicitly address class imbalance or focus on maximizing recall for the hazardous class may be more appropriate.
 
 <img width="636" height="457" alt="Screenshot 2025-09-03 at 11 10 33 PM" src="https://github.com/user-attachments/assets/d7d5a48c-b744-4a77-9fd9-6ea9e1525968" />
 <img width="758" height="563" alt="Screenshot 2025-09-03 at 11 10 44 PM" src="https://github.com/user-attachments/assets/5bfedfdb-42c4-4489-b485-db534123b1c1" />
@@ -117,9 +116,7 @@ We think the decision tree is a solid first model, as with class weights and lig
 
 ### Model 2: K-Nearest-Neighbors
 
-We found that KNN was not a great classification model for this data. Actually, there was a lot of hope that given dimension reduction through PCA, KNN would quite fast and would have a good classification report. Originally, we planned on reducing dimensions from $k=27$ to $k=5$ with `max_num_neighbors=10`, but then we tried to push the model a little more by forcing it to $k=8$, as our macro F1-Score was hovering around 0.5, which was definitely not optimal. Increasing $k$ to 8 and `num_neighbors` to 15, this forced our training to go through much more iterations and calculate more, in fact, the training time scaled by about a factor of 3 where the new training parameters took about 17 minutes to compute. This extra computing time might have been worth it because our F1-score increased to about 0.7, meaning that our model correctly classified both classes at about 70% (much better than 50%). While this number is substantially better, our model will not be safe because there is a substantial percentage where our model does not classify a hazardous asteroid. In this context, our model should do it's absolute best to maximumize it's True-Positive Classifications (correctly classifying a hazardous asteroid) or else the planet might be in danger!  
-
-We also wanted to include 10 random pairs' accuracies to show that all of the accuracies were measured to be around 0.99, which sounds amazing! The issue is that there is a lack of 
+We found that KNN was not a great model
 
 ### Additional Model Trial: SVM using Linear and RBF Kernels
 
@@ -133,3 +130,4 @@ Gordon: I primarily did the data preprocessing part, dropping unusable feature c
 
 Nafi : In Milestone3, used Gordons preprocessed data and processed it some more and imported the Decision Tree model from sklearn and trained and compared results using different values of K. For Milestone 1, 2, 3 and 4, helped with the writeup, mainly doing the sections I had done myself while also writing for the overall project in the README and WrittenReport.
 
+Alex: In Milestone 2, I contributed in 
